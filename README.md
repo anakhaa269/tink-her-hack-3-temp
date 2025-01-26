@@ -90,9 +90,9 @@ For Hardware:
 [Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- [anakha]: [coding]
+- [ann maria]: [coding]
+- [akshaya]: [coding]
 
 ---
 Made with ❤️ at TinkerHub
