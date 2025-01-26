@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeSync - Your Personal Time Management Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7ff;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .active-tab {
+            border-bottom: 3px solid #667eea;
+            color: #667eea;
+        }
+        
+        /* Login and Signup Styles */
+        #loginPage, #signUpPage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFB6C1;
+            z-index: 1000;
+        }
+
+        .login-card, .signUp-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .login-card input, .signUp-card input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .login-card button, .signUp-card button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .login-card button:hover, .signUp-card button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Login Page -->
+    <div id="loginPage">
+        <div class="login-card">
+            <h2 style="text-align:center; color: #4CAF50;">TimeSync Login</h2>
+            <input type="text" id="username" placeholder="Enter Username" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <button onclick="login()">Login</button>
+            <p style="text-align:center;">Don't have an account? <a href="#" onclick="goToSignUp()">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Sign Up Page -->
+    <div id="signUpPage" style="display: none;">
+        <div class="signUp-card">
+            <h2 style="text-align:center; color: #4CAF50;">TimeSync Sign Up</h2>
+            <input type="text" id="newUsername" placeholder="Create Username" required>
+            <input type="password" id="newPassword" placeholder="Create Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            <button onclick="signUp()">Sign Up</button>
+            <p style="text-align:center;">Already have an account? <a href="#" onclick="goToLogin()">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Main Dashboard (Hidden by default) -->
+    <div id="mainDashboard" class="container" style="display: none;">
+        <header class="flex justify-between items-center py-6">
+            <div class="flex items-center">
+                <h1 class="text-3xl font-bold text-purple-600">TimeSync</h1>
+            </div>
+            <nav>
+                <div class="flex space-x-4">
+                    <button class="tab-btn active-tab" data-tab="dashboard">Dashboard</button>
+                    <button class="tab-btn" data-tab="calendar">Calendar</button>
+                    <button class="tab-btn" data-tab="todo">To-Do List</button>
+                    <button class="tab-btn" data-tab="health">Health Tracker</button>
+                    <button class="tab-btn" data-tab="alerts">Alerts</button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Rest of the previous dashboard content remains the same -->
+        <main class="mt-8">
+            <!-- Dashboard content from previous artifact -->
+            <section id="dashboard" class="tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-2xl font-semibold mb-4">Today's Overview</h2>
+                        <div id="today-tasks">
+                            <!-- Dynamic tasks will load here -->
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-2xl font-semibold mb-4">Upcoming Events</h2>
+                        <div id="upcoming-events">
+                            <!-- Event list will populate dynamically -->
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md gradient-bg text-white">
+                        <h2 class="text-2xl font-semibold mb-4">Motivation Corner</h2>
+                        <div id="motivation-quote">
+                            <!-- Motivational quotes will display here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other sections remain the same as in previous artifact -->
+        </main>
+    </div>
+
+    <script>
+        // Simulated database of users (for demonstration purposes)
+        const users = {
+            "user": "password"
+        };
+
+        // Login functionality
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (users[username] && users[username] === password) {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('mainDashboard').style.display = 'block';
+                renderCalendar();
+            } else {
+                alert("Incorrect username or password!");
+            }
+        }
+
+        function goToSignUp() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('signUpPage').style.display = 'block';
+        }
+
+        function goToLogin() {
+            document.getElementById('signUpPage').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'block';
+        }
+
+        function signUp() {
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newPassword === confirmPassword) {
+                // Add the new user to the simulated "database"
+                users[newUsername] = newPassword;
+                alert("Account created successfully! You can now login.");
+                goToLogin();
+            } else {
+                alert("Passwords do not match!");
+            }
+        }
+
+        // Tab Switching Logic
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active state from all tabs
+                document.querySelectorAll('.tab-btn').forEach(btn => 
+                    btn.classList.remove('active-tab'));
+                document.querySelectorAll('.tab-content').forEach(content => 
+                    content.classList.add('hidden'));
+                
+                // Activate current tab
+                button.classList.add('active-tab');
+                document.getElementById(button.dataset.tab).classList.remove('hidden');
+            });
+        });
+
+        // Motivation Quotes
+        const quotes = [
+            "Your potential is limitless. Start today.",
+            "Small progress is still progress.",
+            "Consistency beats intensity every time."
+        ];
+        document.getElementById('motivation-quote').textContent = 
+            quotes[Math.floor(Math.random() * quotes.length)];
+
+        // Dynamic Calendar Generation
+        function generateCalendar() {
+            const grid = document.getElementById('calendar-grid');
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            
+            // Create day headers
+            days.forEach(day => {
+                const dayEl = document.createElement('div');
+                dayEl.textContent = day;
+                dayEl.classList.add('text-center', 'font-bold');
+                grid.appendChild(dayEl);
+            });
+
+            // Generate days of current month
+            const today = new Date();
+            const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+            
+            for(let i = 1; i <= daysInMonth; i++) {
+                const dayEl = document.createElement('div');
+                dayEl.textContent = i;
+                dayEl.classList.add('border', 'p-2', 'text-center');
+                grid.appendChild(dayEl);
+            }
+        }
+    </script>
+</body>
+</html>
