@@ -11,7 +11,7 @@
 - Member 3: [Akshaya biju] - [sngce College]
 
 ### Hosted Project Link
-[mention your project hosted project link here]
+https://github.com/anakhaa269/timesync
 
 ### Project Description
 [Time management web]
