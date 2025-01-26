@@ -6,26 +6,25 @@
 
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Member 1: [Anakha b] - [sngce College]
+- Member 2: [Ann maria roy] - [sngce College]
+- Member 3: [Akshaya biju] - [sngce College]
 
 ### Hosted Project Link
 [mention your project hosted project link here]
 
 ### Project Description
-[2-3 lines about what your project does]
+[Time management web]
 
 ### The Problem statement
-[What ridiculous problem are you solving?]
+[meeting deadlines]
 
 ### The Solution
-[How are you solving it? Keep it fun!]
-
+[organised web ]
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
+- [html]
 - [Frameworks used]
 - [Libraries used]
 - [Tools used]
@@ -84,7 +83,7 @@ For Hardware:
 
 ### Project Demo
 # Video
-[Add your demo video link here]
+[https://www.loom.com/share/6f3ed649b7b94f6f96ebaef82053c635?sid=f1f98784-8d09-4c6c-85f2-edef1891c967]
 *Explain what the video demonstrates*
 
 # Additional Demos
